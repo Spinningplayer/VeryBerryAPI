@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('dashboardservice:server');
 var http = require('http');
+const cron = require('node-schedule')
 
 /**
  * Get port from environment and store in Express.
@@ -28,6 +29,21 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
+// Cron jobs
+
+const spotifyJob = cron.scheduleJob('* 0 * * *', function() {
+  request({url:'https://open.spotify.com/artist/5cgtn5YWC3Fr06wTps1dBq?si=jAfFWr9CRbueiLWhtXkP9w',headers: {'User-Agent':'Firefox'}}, function (error, response, body) {
+    const html = cheerio.load(body);
+    var result = html('meta[property="og:description"]').attr('content');
+    beginStr = result.indexOf("·")+2
+    endString = result.substring(beginStr).indexOf(" ")
+    endString = beginStr+endString
+    console.log(result.substring(beginStr, endString))
+})
+})
+
 
 /**
  * Normalize a port into a number, string, or false.

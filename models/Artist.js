@@ -46,7 +46,23 @@ const ArtistSchema = new Schema({
     shows: [{
         type: ObjectID,
         ref: 'Show'
-    }]
+    }],
+    spotifyListeners: {
+        type: Number,
+        required: false
+    },
+    instagramFollowers: {
+        type: Number,
+        required: false
+    },
+    facebookFollower: {
+        type: Number,
+        required: false
+    },
+    spotifyId: {
+        type: Numver,
+        required: true
+    }
 })
 
 const Artist = mongoose.model('Artist', ArtistSchema)
