@@ -1,4 +1,5 @@
 const Artist = require('../models/Artist')
+const mongo = require('../Config/mongo.db')
 
 module.exports = {
     getArtists(req, res) {
@@ -79,4 +80,6 @@ module.exports = {
             console.log(error);
         })
     }
+
+    
 }

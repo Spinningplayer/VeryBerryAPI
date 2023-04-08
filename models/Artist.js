@@ -60,7 +60,7 @@ const ArtistSchema = new Schema({
         required: false
     },
     spotifyId: {
-        type: Numver,
+        type: String,
         required: true
     }
 })

@@ -4,7 +4,7 @@ var env = {
     dbPort: process.env.DB_PORT || '',
     dbUser: process.env.DB_USER || '',
     dbPassword: process.env.DB_PASSWORD || '',
-    dbDatabase: process.env.DB_DATABASE || 'DashboardDB',
+    dbDatabase: process.env.DB_DATABASE || 'VeryBerryDatabase',
     outletAddress: '192.168.1.104'
 }
 
