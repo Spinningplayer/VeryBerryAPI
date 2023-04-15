@@ -14,5 +14,7 @@ var link = process.env.NODE_ENV === 'production' ?
 
 module.exports = {
     env: env,
-    link: link
+    link: link,
+    token: "jd9h4k329dkg94o20rkt95p2ke0tk4yf",
+    rootpwd: 'root'
 };

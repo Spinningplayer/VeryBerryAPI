@@ -1,6 +1,8 @@
-var package = require('../package.json')
-var ArtistController = require('../controllers/ArtistController')
-var ShowController = require('../controllers/ShowController')
+const package = require('../package.json')
+const ArtistController = require('../controllers/ArtistController')
+const ShowController = require('../controllers/ShowController')
+const UserController = require('../controllers/UserController')
+const auth = require('../middleware/auth')
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -11,14 +13,23 @@ module.exports = (app) => {
     // Artist Routes
     app.get('/artists', ArtistController.getArtists)
     app.get('/artists/:id', ArtistController.getArtist)
-    app.post('/artists', ArtistController.postArtist)
-    app.put('/artists/:id', ArtistController.putArtist)
-    app.delete('/artists/:id', ArtistController.deleteArtist)
+    app.post('/artists', auth,  ArtistController.postArtist)
+    app.put('/artists/:id', auth,  ArtistController.putArtist)
+    app.delete('/artists/:id', auth,  ArtistController.deleteArtist)
 
     // Show Routes
     app.get('/shows', ShowController.getShows)
     app.get('/shows/:id', ShowController.getShow)
-    app.post('/shows', ShowController.postShow)
-    app.put('/shows/:id', ShowController.putShow)
-    app.delete('/shows/:id', ShowController.deleteShow)
+    app.post('/shows', auth,  ShowController.postShow)
+    app.put('/shows/:id', auth,  ShowController.putShow)
+    app.delete('/shows/:id', auth,  ShowController.deleteShow)
+
+    // User Routes
+    app.get('/users', auth,  UserController.getUsers)
+    app.get('/users/:id', auth,  UserController.getUser)
+    app.post('/users', auth, UserController.addUser)
+    app.put('/user/:id', auth,  UserController.putUser)
+    app.delete('/user/:id', auth,  UserController.deleteUser)
+    app.post('/users/authenticate', UserController.authenticate)
+    
 }

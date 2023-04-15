@@ -4,12 +4,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+const User = require('./controllers/UserController')
 
 var routes = require('./routes/routes');
 
 var app = express();
 
 mongoose.Promise = global.Promise;
+
+User.initializeRoot();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
