@@ -62,6 +62,12 @@ const ArtistSchema = new Schema({
     spotifyId: {
         type: String,
         required: true
+    },
+    lastEditBy: {
+        type: String
+    },
+    lastEdited: {
+        type: Date
     }
 })
 
