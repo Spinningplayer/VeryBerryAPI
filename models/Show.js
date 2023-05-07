@@ -20,6 +20,10 @@ const ShowSchema = new Schema({
         ref: 'Artist',
         required: true
     },
+    artistName: {
+        type: String,
+        required: false
+    },
     ticketLink: {
         type: String,
         required: true
