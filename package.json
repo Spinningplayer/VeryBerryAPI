@@ -12,5 +12,8 @@
     "node-schedule": "^2.1.1",
     "nodemon": "^2.0.22",
     "request": "^2.88.2"
+  },
+  "scripts": {
+    "serve":"nodemon bin/www"
   }
 }

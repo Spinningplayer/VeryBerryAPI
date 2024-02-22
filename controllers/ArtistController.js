@@ -82,9 +82,8 @@ module.exports = {
     },
 
     async uploadPicture(req, res, next) {
-        console.log("Processing file upload.")
-    
         await uploadFile(req, res, function (err) {
+            
             if(err) {
                 console.log(err)
                 res.status(500).json(err)
