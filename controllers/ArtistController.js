@@ -1,5 +1,6 @@
 const Artist = require('../models/Artist')
 const mongo = require('../Config/mongo.db')
+const uploadFile = require('../middleware/upload')
 
 module.exports = {
     getArtists(req, res) {
@@ -34,7 +35,7 @@ module.exports = {
 
     postArtist(req, res) {
         var body = req.body;
-
+        
         Artist.create(body)
         .then(artist => {
             res.status(200);
@@ -51,7 +52,6 @@ module.exports = {
     putArtist(req, res) {
         var body = req.body;
         var id = req.params.id;
-
         Artist.findOneAndUpdate({_id: id}, body)
         .then(artist => {
             res.status(200);
@@ -79,6 +79,20 @@ module.exports = {
 
             console.log(error);
         })
+    },
+
+    async uploadPicture(req, res, next) {
+        console.log("Processing file upload.")
+    
+        await uploadFile(req, res, function (err) {
+            if(err) {
+                console.log(err)
+                res.status(500).json(err)
+            } else {
+                res.status(200).json({"msg":"Succesfully uploaded file"})
+            }
+        });
+        
     }
 
     

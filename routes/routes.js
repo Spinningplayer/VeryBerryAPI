@@ -3,6 +3,7 @@ const ArtistController = require('../controllers/ArtistController')
 const ShowController = require('../controllers/ShowController')
 const UserController = require('../controllers/UserController')
 const auth = require('../middleware/auth')
+const upload = require('../middleware/upload')
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
@@ -16,6 +17,7 @@ module.exports = (app) => {
     app.post('/artists', auth,  ArtistController.postArtist)
     app.put('/artists/:id', auth,  ArtistController.putArtist)
     app.delete('/artists/:id', auth,  ArtistController.deleteArtist)
+    app.post('/artists/uploadPicture', ArtistController.uploadPicture)
 
     // Show Routes
     app.get('/shows', ShowController.getShows)
@@ -28,7 +30,7 @@ module.exports = (app) => {
     app.get('/users', auth,  UserController.getUsers)
     app.get('/users/:id', auth,  UserController.getUser)
     app.post('/users', auth, UserController.addUser)
-    app.put('/user/:id', auth,  UserController.putUser)
+    app.put('/user/:id', auth, UserController.putUser)
     app.delete('/user/:id', auth,  UserController.deleteUser)
     app.post('/users/authenticate', UserController.authenticate)
     
