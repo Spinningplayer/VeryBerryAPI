@@ -1,7 +1,6 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const env = require('../Config/env/env.js')
-const bcrypt = require('bcrypt');
 const hash = require('../helpers/hashHelper');
 
 module.exports = {

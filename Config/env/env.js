@@ -5,12 +5,11 @@ var env = {
     dbUser: process.env.DB_USER || '',
     dbPassword: process.env.DB_PASSWORD || '',
     dbDatabase: process.env.DB_DATABASE || 'VeryBerryDatabase',
-    outletAddress: '192.168.1.104',
     storagePath: process.env.STORAGE_PATH || 'C:\\Users\\Thijs\\Documents\\GitHub\\VeryBerryRecordsWebsite\\VBR-App\\src\\assets'
 }
 
 var link = process.env.NODE_ENV === 'production' ?
-    'mongodb://' + env.dbUser + ':' + env.dbPassword + '@' + env.dbHost + ':' + env.dbPort + '/' + env.dbDatabase :
+    'mongodb://' + env.dbUser + ':' + env.dbPassword + '@' + env.dbHost + ':' + env.dbPort + '/' + env.dbDatabase + '?authSource=admin' :
     'mongodb://127.0.0.1/' + env.dbDatabase;
 
 
