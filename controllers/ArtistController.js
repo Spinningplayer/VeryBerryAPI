@@ -92,6 +92,24 @@ module.exports = {
             }
         });
         
+    },
+
+    updateListeners(req, res) {
+        var spotifyListeners = req.body.spotifyListeners;
+        console.log(req.body)
+        var id = req.params.id;
+        console.log(id)
+        Artist.findOneAndUpdate({_id: id}, {spotifyListeners: spotifyListeners})
+        .then(artist => {
+            res.status(200);
+            res.json({"spotifyListeners": artist.spotifyListeners});
+        })
+        .catch(error => {
+            res.status(500);
+            res.json(error);
+
+            console.log(error);
+        })
     }
 
     

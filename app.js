@@ -5,7 +5,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var cron = require('node-cron')
 const User = require('./controllers/UserController')
+
+const listenerJob = require('./cron/listenerJob')
 
 var routes = require('./routes/routes');
 const { env } = require('process');
@@ -13,8 +16,8 @@ var app = express();
 
 mongoose.Promise = global.Promise;
 
-
-
+const job = cron.schedule('0 8 * * *', listenerJob.listenerJob, {scheduled: false, timezone: 'Europe/Amsterdam'})
+job.start();
 User.initializeRoot();
 
 app.use(logger('dev'));

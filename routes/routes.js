@@ -18,6 +18,7 @@ module.exports = (app) => {
     app.put('/artists/:id', auth,  ArtistController.putArtist)
     app.delete('/artists/:id', auth,  ArtistController.deleteArtist)
     app.post('/artists/uploadPicture', ArtistController.uploadPicture)
+    app.put('/artists/listeners/:id', ArtistController.updateListeners)
 
     // Show Routes
     app.get('/shows', ShowController.getShows)

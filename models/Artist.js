@@ -63,6 +63,10 @@ const ArtistSchema = new Schema({
         type: String,
         required: true
     },
+    spotifyListeners: {
+        type: String,
+        required: false
+    },
     lastEditBy: {
         type: String
     },
