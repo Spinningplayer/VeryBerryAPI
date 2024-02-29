@@ -17,5 +17,5 @@ module.exports = {
     env: env,
     link: link,
     token: "jd9h4k329dkg94o20rkt95p2ke0tk4yf",
-    rootpwd: 'root'
+    rootpwd: process.env.API_ROOT_PWD || 'root'
 };
