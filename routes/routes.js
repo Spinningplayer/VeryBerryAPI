@@ -8,7 +8,7 @@ const upload = require('../middleware/upload')
 module.exports = (app) => {
     app.get('/', (req, res) => {
         res.status(200);
-        res.json({msg: "RaspberryAPI version " + package.version});
+        res.json({msg: "VBR Api version " + package.version});
     });
 
     // Artist Routes

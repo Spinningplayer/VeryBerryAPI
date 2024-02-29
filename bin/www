@@ -7,14 +7,12 @@
 var app = require('../app');
 var debug = require('debug')('dashboardservice:server');
 var http = require('http');
-const cron = require('node-schedule')
-var request = require('request')
-var mongo = require('../Config/mongo.db')
+var env = require('../Config/env/env')
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(env.env.webPort);
 app.set('port', port);
 
 /**
