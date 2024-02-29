@@ -1,6 +1,6 @@
 FROM node:hydrogen
 
-EXPOSE 3001
+EXPOSE 3000
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
